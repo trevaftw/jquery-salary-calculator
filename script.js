@@ -2,7 +2,7 @@ console.log('javascript');
 
 $(document).ready(readyNow);
 
-let total = 0
+
 
 function readyNow() {
     console.log('jquery');
@@ -38,10 +38,40 @@ function addEmployee() {
     $('#title').val('');
     $('#annualSalary').val('');
 
+    //tried runing the below code to add up all the money as they were added. didn't work. go back and start with basics 
+    let total = 0; //we set the 
+    let addedSalary = $('.money');
+    for(let i = 0; i < addedSalary.length; i++){
+        total = total + Number(addedSalary[i].innerHTML);
+        console.log(total);
+    }
+    $('#salaryTotal').text(total);
+
+    if (total > 20000 ) {
+        $('#salaryTotal').css('color', 'red');
+    }
+
+
+
+    // total = total + addedSalary;
+    console.log(addedSalary);
+    // $('#salaryTotal').text(total);
+
+    // $('#salaryTotal').on('click', sumValues);
+
+    // function sumValues() {
+    //     total += total $('.money').val();
+    // }
+
+
 }
 
 //when we run this function, we will remove the parent of the parent of this (this is the button, the parent is the td, and that parent is the row.)
 function removeEmployee() {
     console.log('remove');
-    $(this).parent().parent().remove(); 
+    $(this).parent().parent().remove();
+}
+
+function sumValues() {
+    console.log('sumValues');
 }
