@@ -2,6 +2,8 @@ console.log('javascript');
 
 $(document).ready(readyNow);
 
+let total = 0
+
 function readyNow() {
     console.log('jquery');
     $('#submitButton').on('click', addEmployee);
@@ -13,7 +15,7 @@ function addEmployee() {
     let firstName = $('#firstName').val();
     let lastName = $('#lastName').val();
     let id = $('#id').val();
-    let title = $('#titile').val();
+    let title = $('#title').val();
     let annualSalary = $('#annualSalary').val();
 
     $('#tableBody').append(`
@@ -22,7 +24,15 @@ function addEmployee() {
             <td>${lastName}</td>
             <td>${id}</td>
             <td>${title}</td>
-            <td>${annualSalary}</td>
+            <td class="money">${annualSalary}</td>
+            <td><button class="deleteRow">Delete</button></td>
         </tr>
     `)
+
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#id').val('');
+    $('#title').val('');
+    $('#annualSalary').val('');
+
 }

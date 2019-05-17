@@ -1,3 +1,7 @@
 body {
     background-color: aliceblue;
 }
+
+td {
+    border: 5px black solid;
+}
