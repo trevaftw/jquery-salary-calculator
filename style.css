@@ -2,6 +2,23 @@ body {
     background-color: aliceblue;
 }
 
+table {
+    border-collapse: collapse;
+    width:  100%;
+}
+
 td {
     border: 5px black solid;
 }
+
+th {
+    background-color: gray;
+    border: 5px solid blue;
+}
+
+tr {
+    height: 40px;
+    width: auto;
+    text-align: center
+}
+
