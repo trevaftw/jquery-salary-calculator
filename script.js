@@ -40,6 +40,8 @@ function addEmployee() {
 
     let total = 0; //for the purpose of this, we start with a zero number in JS, but display 15500 on the DOM because there are three initial employees. 
     let addedSalary = $('.money');
+    console.log('addedSalary,', addedSalary);
+
     //each time we click submit, we will run through the addedSlary variable (which is each item with the class $.money) at the innerHTML name (because this is where we find the value of the $.money class) and add them up
     for (let i = 0; i < addedSalary.length; i++) {
         total = total + Number(addedSalary[i].innerHTML); //everytime we click submit, it sets the total to be equal to the sum of all the totals 

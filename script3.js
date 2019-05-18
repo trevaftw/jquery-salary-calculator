@@ -4,33 +4,64 @@ console.log('javascript');
 
 $(document).ready(readyNow);
 
+let employeeList = [
+    {
+        fName: 'Jen',
+        lName: 'Barber',
+        idid: 4521,
+        position: 'Team Laead',
+        money: 80000,
+    },
+    {
+        fName: 'Maurice',
+        lName: 'Moss',
+        idid: 8724,
+        position: 'Support Team',
+        money: 58000,
+    },
+    {
+        fName: 'Roy',
+        lName: 'Smith',
+        idid: 9623,
+        position: 'Quality Assurance',
+        money: 48000,
+    }
+];
+
+console.log('employeeList,', employeeList);
 
 function readyNow() {
     console.log('jquery'); //when the page is ready and jquery is sourced correctly, consle log jquery
     $('#submitButton').on('click', addEmployee); //when the submit button is clicked, run the add employee function
     $('#tableBody').on('click', '.deleteRow', removeEmployee); //hey jq, when we click in the table body, specifically the money class, run the remove employee function
-
 }
+
 
 function addEmployee() {
     console.log('submit click'); //each time this function is run, it will conbsole log this
 
     // define where each employee info comes from 
-    let = firstName = $('#firstName').val()
-    let = lastName = $('#lastName').val()
-    let = id = $('#id').val()
-    let = title = $('#title').val()
-    let = annualSalary = $('#annualSalary').val()
+
+    let fName = $('#firstName').val();
+    let lName = $('#lastName').val();
+    let idid = $('#id').val();
+    let position = $('#title').val();
+    let money = $('#annualSalary').val();
+
+    let newEmployee = { fName, lName, idid, position, money };
+
+    employeeList.push(newEmployee);
+    console.log('new employeeList,', employeeList);
 
     //each time this function run (which is when the submit button is clicke), it will append the inputs from the DOM (which are defnied from the above variables) into table below the data
     $('#tableBody').append(` 
         <tr>
-            <td class="Fname">${firstName}</td>
-            <td class="Lname">${lastName}</td>
-            <td class="idid">${id}</td>
-            <td class="position">${title}</td>
-            <td class="money">${annualSalary}</td>
-            <td><button class="deleteRow">Delete</button></td>
+            <td class="Fname">${fName}</td>
+            <td class="Lname">${lName}</td>
+            <td class="idid">${idid}</td>
+            <td class="position">${position}</td>
+            <td class="money">${money}</td>
+            <td><button id="${idid}" class="deleteRow">Delete</button></td>
         </tr>
     `)
     // after the input from the DOM is appended into the table, we will now empty the inputs 
@@ -40,11 +71,9 @@ function addEmployee() {
     $('#title').val('');
     $('#annualSalary').val('');
 
-    let total = 0; //for the purpose of this, we start with a zero number in JS, but display 15500 on the DOM because there are three initial employees. 
-    let addedSalary = $('.money');
-    //each time we click submit, we will run through the addedSlary variable (which is each item with the class $.money) at the innerHTML name (because this is where we find the value of the $.money class) and add them up
-    for (let i = 0; i < addedSalary.length; i++) {
-        total = total + Number(addedSalary[i].innerHTML); //everytime we click submit, it sets the total to be equal to the sum of all the totals 
+    let total = 0;
+    for (let i = 0; i < employeeList.length; i++) {
+        total = total + Number(employeeList[i].money); //everytime we click submit, it sets the total to be equal to the sum of all the totals 
     }
     let monthlyIncome = total / 12; //looking for monthly cost, so divide yearly slaary by 12 to get monthly
     let fixedMonthlyIncome = monthlyIncome.toFixed(2); //fixes the decimal length to be only two places
@@ -63,12 +92,20 @@ function addEmployee() {
 function removeEmployee() {
     console.log('remove');
     $(this).parent().parent().remove();
+    
+    // employeeList.splice(this, this);
+    // for (j = 0; j < employeeList.length; j++) {
+    //     if (employeeList[j].idid === this.idid) {
+    //         employeeList.splice(j, 1);
+    //     }
+    // }
+
+    console.log('updated removed employeeList,', employeeList);
 
     let total = 0;
-    let addedSalary = $('.money');
-    //each time we click delete, we will run through the addedSlary variable at the .money class value and add them up then subtract the value of this delete button that was clicked from that total
-    for (let i = 0; i < addedSalary.length; i++) {
-        total = total + Number(addedSalary[i].innerHTML) - Number($('this').text());
+    for (let i = 0; i < employeeList.length; i++) {
+        total = total + Number(employeeList[i].money) - Number($('this').text());
+
     }
     let monthlyIncome = total / 12;
     let fixedMonthlyIncome = monthlyIncome.toFixed(2);
