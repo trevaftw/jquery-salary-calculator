@@ -61,8 +61,20 @@ function addEmployee() {
 function removeEmployee() {
     console.log('remove');
     $(this).parent().parent().remove();
-}
 
-function sumValues() {
-    console.log('sumValues');
+    let total = 0;
+    let addedSalary = $('.money');
+    //each time we click submit, we will run through the addedSlary variable at the .money class value and add them up
+    for (let i = 0; i < addedSalary.length; i++) {
+        total = total + Number(addedSalary[i].innerHTML) - Number($('this').text());
+    }
+    let monthlyIncome = total/12; 
+
+    $('#salaryTotal').text(monthlyIncome);
+
+    if (monthlyIncome > 20000) {
+        $('#salaryTotal').css('color', 'red');
+    } else {
+        $('#salaryTotal').css('color', 'black');
+    }
 }
