@@ -11,38 +11,24 @@ function readyNow() {
 
 }
 
-//the table of all new employees is an array
-let employeeList = [];
-
 function addEmployee() {
     console.log('submit click'); //each time this function is run, it will conbsole log this
 
-    //each employee is an array of their info
-    let employeeTable = {
-        firstName: [],
-        lastName: [],
-        id: [],
-        title: [],
-        annualSalary: []
-    };
-
     // define where each employee info comes from 
-    employeeTable.firstName = $('#firstName').val()
-    employeeTable.lastName = $('#lastName').val()
-    employeeTable.id = $('#id').val()
-    employeeTable.title = $('#title').val()
-    employeeTable.annualSalary = $('#annualSalary').val()
-    employeeList.push(employeeTable);
-
+    let = firstName = $('#firstName').val()
+    let = lastName = $('#lastName').val()
+    let = id = $('#id').val()
+    let = title = $('#title').val()
+    let = annualSalary = $('#annualSalary').val()
 
     //each time this function run, it will append the inputs from the above variables into the below tbales
     $('#tableBody').append(` 
         <tr>
-            <td class="Fname">${employeeTable.firstName}</td>
-            <td class="Lname">${employeeTable.lastName}</td>
-            <td class="idid">${employeeTable.id}</td>
-            <td class="position">${employeeTable.title}</td>
-            <td class="money">${employeeTable.annualSalary}</td>
+            <td class="Fname">${firstName}</td>
+            <td class="Lname">${lastName}</td>
+            <td class="idid">${id}</td>
+            <td class="position">${title}</td>
+            <td class="money">${annualSalary}</td>
             <td><button class="deleteRow">Delete</button></td>
         </tr>
     `)
@@ -53,57 +39,21 @@ function addEmployee() {
     $('#title').val('');
     $('#annualSalary').val('');
 
-    //for each click, push all the table data into the employeeList
-    for (let i = 0; i < employeeTable.length; i++) {
-        employeeList.push($('.Fname').text());
-        employeeList.push(employeeTable[i]);
-    }
-
-
-    console.log('employeeList:', employeeList);
-
-    // $('#salaryTotal').text(total);
-
-    // console.log('total:', total);
-
-    // console.log('employeeTable.annualSalary:', employeeTable.annualSalary);
-    // console.log('employeeList:', employeeList);
-
-    //originally had below as the way
-    // to calcdulate the employee salarays. 
-    // went back and made each employee into an object.
-    // now going to find new way to do so.  
-
-
-
-    let total = 15500; 
+    let total = 0;
     let addedSalary = $('.money');
+    //each time we click submit, we will run through the addedSlary variable at the .money class value and add them up
     for (let i = 0; i < addedSalary.length; i++) {
         total = total + Number(addedSalary[i].innerHTML);
-        console.log('total:', total);
     }
-    $('#salaryTotal').text(total);
+    let monthlyIncome = total/12; 
 
-    console.log('addedsalary', addedSalary);
+    $('#salaryTotal').text(monthlyIncome);
 
-    if (total > 20000) {
+    if (monthlyIncome > 20000) {
         $('#salaryTotal').css('color', 'red');
     } else {
         $('#salaryTotal').css('color', 'black');
     }
-
-
-
-    // total = total + addedSalary;
-    // console.log('addedSAalary', addedSalary);
-    // $('#salaryTotal').text(total);
-
-    // $('#salaryTotal').on('click', sumValues);
-
-    // function sumValues() {
-    //     total += total $('.money').val();
-    // }
-
 
 }
 
