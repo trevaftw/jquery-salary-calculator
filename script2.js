@@ -1,5 +1,5 @@
 ///this second JS file is the original file before I cleaned it up and allows me to mess around without effecting the original file. 
-
+//this is here now as a relic if i need to reference it later
 
 console.log('javascript');
 

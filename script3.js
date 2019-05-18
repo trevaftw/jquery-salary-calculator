@@ -1,3 +1,5 @@
+//this file is my new test file. script works, but it is a hackjob. going to try and code it properly.
+
 console.log('javascript');
 
 $(document).ready(readyNow);
