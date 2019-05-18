@@ -1,3 +1,6 @@
+///this second JS file is the original file before I cleaned it up and allows me to mess around without effecting the original file. 
+
+
 console.log('javascript');
 
 $(document).ready(readyNow);
